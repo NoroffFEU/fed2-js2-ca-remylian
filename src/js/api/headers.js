@@ -1,11 +1,11 @@
-import { API_KEY } from "./constants";
-
 export function headers() {
-  const headers = new Headers();
+	const headers = new Headers();
 
-  if (API_KEY) {
-    headers.append("X-Noroff-API-Key", API_KEY);
-  }
+	const key = localStorage.getItem('noroffApiKey') || API_KEY;
 
-  return headers;
+	if (key) {
+		headers.append('X-Noroff-API-Key', API_KEY);
+	}
+
+	return headers;
 }
