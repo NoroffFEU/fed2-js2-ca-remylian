@@ -1,4 +1,5 @@
 import { headers } from './headers';
+import { handleApiError } from './errorHandler';
 
 /**
  * A generic function to make API requests.
@@ -22,9 +23,8 @@ export async function apiRequest(url, method = 'GET', body = null) {
 
 	try {
 		const response = await fetch(url, options);
-
 		if (!response.ok) {
-			throw new Error(`API request failed with status: ${response.status}`);
+			await handleApiError(response);
 		}
 		return await response.json();
 	} catch (error) {

@@ -4,7 +4,7 @@ export function headers() {
 	const key = localStorage.getItem('noroffApiKey') || API_KEY;
 
 	if (key) {
-		headers.append('X-Noroff-API-Key', API_KEY);
+		headers.append('X-Noroff-API-Key', key);
 	}
 
 	return headers;
