@@ -2,16 +2,43 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>My profile</title>
+		<title>My Profile</title>
 		<script type="module" src="/src/app.js"></script>
 	</head>
 	<body>
 		<h1>Profile</h1>
 
-		<form name="updateProfile">
-			<button>Update Profile</button>
-		</form>
+		<!-- Add CSS to apropriate file later -->
+		<section id="profile-info">
+			<img id="banner-img" src="" alt="Banner image" style="max-width: 100%; height: auto" />
+			<img id="avatar-img" src="" alt="Avatar" width="100" height="100" />
+			<h2 id="profile-username"></h2>
+			<p id="profile-email"></p>
+		</section>
+
+		<!-- Update form -->
+		<section id="profile-update">
+			<h3>Update Profile</h3>
+			<form name="updateProfile">
+				<div>
+					<label for="avatar">Avatar URL:</label>
+					<input type="text" name="avatar" id="avatar" placeholder="https://..." />
+				</div>
+				<div>
+					<label for="banner">Banner URL:</label>
+					<input type="text" name="banner" id="banner" placeholder="https://..." />
+				</div>
+				<div id="error-message"></div>
+				<button type="submit">Update Profile</button>
+			</form>
+		</section>
+
+		<!-- User's posts -->
+		<section id="user-posts">
+			<h3>Your Posts</h3>
+			<a href="/post/create/"> Create New Post</a>
+			<div id="posts-container"></div>
+		</section>
 	</body>
 </html>

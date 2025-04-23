@@ -1,0 +1,17 @@
+h2 {
+	border-bottom: 5px solid green;
+}
+
+#feed {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin: 0 auto;
+	text-align: center;
+	outline: 3px solid red;
+	max-width: 30rem;
+}
+
+#posts-container {
+	outline: 2px solid blue;
+}

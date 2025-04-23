@@ -1,34 +1,40 @@
-import { createPost } from '../../api/post/create';
+import { createPost } from '../../api/post/create.js';
 
 export async function onCreatePost(event) {
 	event.preventDefault();
-
 	const form = event.target;
+
+	// Gather form values
 	const title = form.elements.title.value.trim();
 	const body = form.elements.body.value.trim();
+	const tags = form.elements.tags.value
+		.split(',')
+		.map((t) => t.trim())
+		.filter(Boolean);
+	const rawMedia = form.elements.media.value.trim();
 
-	// tags are entered as a string separated by commas, so we convert it to an array.
-	const tagString = form.elements.tags.value.trim();
-	const tags = tagString ? tagString.split(',').map((tag) => tag.trim()) : [];
-
-	const media = form.elements.media.value.trim() || null;
-
-	const postData = { title, body, tags, media };
+	// Build payload, excluding media if the field is left blank.
+	const payload = { title, body, tags };
+	if (rawMedia) {
+		try {
+			new URL(rawMedia);
+			payload.media = {
+				url: rawMedia,
+				alt: `${title} - banner image`,
+			};
+		} catch {
+			return alert('please enter a valid URL for the image');
+		}
+	}
 
 	try {
-		const response = await createPost(postData);
-		console.log('Post created successfully:', response);
-
+		const response = await createPost(payload);
 		alert('Post created successfully!');
 
-		//clear form after successful submission
-		form.reset();
-	} catch (error) {
-		console.error('Error creating post:', error);
-
-		const errorElement = document.getElementById('error-message');
-		if (errorElement) {
-			errorElement.textContent = error.message;
-		}
+		// Redirect to feed
+		window.location.href = '/';
+	} catch (err) {
+		console.error('Error creating post:', err);
+		document.getElementById('error-message').textContent = err.message;
 	}
 }

@@ -21,7 +21,7 @@ export async function readPost(id) {
  */
 
 export async function readPosts(limit = 12, page = 1, tag) {
-	let query = `?limit=${limit}&page=${page}`;
+	let query = `?limit=${limit}&page=${page}&_author=true`;
 	if (tag) {
 		query += `&tag=${encodeURIComponent(tag)}`;
 	}
