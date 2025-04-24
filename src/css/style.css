@@ -1,2 +1,6 @@
 @import url(_reset.css);
 @import url(_feed.css);
+
+.post-media {
+	max-width: 30rem;
+}

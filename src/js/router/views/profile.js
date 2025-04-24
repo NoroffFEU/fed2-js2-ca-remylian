@@ -44,6 +44,7 @@ authGuard();
 			const card = document.createElement('div');
 			card.innerHTML = `
       <h4>${post.title}</h4>
+			${post.media?.url || post.media ? `<img src="${post.media.url || post.media}" alt="Banner for ${post.title}" class="post-media" />` : ''}
       <p>${post.body}</p>
       <a href="/post/edit/?id=${post.id}">Edit</a>
       <button class="delete-button" data-post-id="${post.id}">Delete</button>`;

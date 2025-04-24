@@ -18,6 +18,7 @@ authGuard();
 			card.classList.add('post-card');
 			card.innerHTML = `
 			<h2>${post.title}</h2>
+			${post.media?.url || post.media ? `<img src="${post.media.url || post.media}" alt="Banner for ${post.title}" class="post-media" />` : ''}
 			<p>${post.body}</p>
 			<p><small>By ${post.author?.name}</small></p>
 			<a href="/post/?id=${post.id}">View</a>

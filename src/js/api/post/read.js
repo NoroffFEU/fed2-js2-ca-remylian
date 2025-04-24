@@ -20,7 +20,7 @@ export async function readPost(id) {
  * @returns {Promise<object} - the post data.
  */
 
-export async function readPosts(limit = 12, page = 1, tag) {
+export async function readPosts(limit = 50, page = 1, tag) {
 	let query = `?limit=${limit}&page=${page}&_author=true`;
 	if (tag) {
 		query += `&tag=${encodeURIComponent(tag)}`;
