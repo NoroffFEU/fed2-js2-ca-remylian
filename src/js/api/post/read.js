@@ -8,7 +8,7 @@ import { API_SOCIAL_POSTS, API_SOCIAL_PROFILES } from '../constants';
  */
 
 export async function readPost(id) {
-	const url = `${API_SOCIAL_POSTS}/${id}`;
+	const url = `${API_SOCIAL_POSTS}/${id}?_author=true`;
 	return await apiRequest(url, 'GET');
 }
 
