@@ -3,25 +3,63 @@ import { readProfile } from '../../api/profile/read';
 import { readPostsByUser } from '../../api/post/read';
 import { onUpdateProfile } from '../../ui/profile/update';
 import { onDeletePost } from '../../ui/post/delete';
+import { followUser, unfollowUser } from '../../api/profile/follow';
 
 authGuard();
 
 (async function initProfilePage() {
-	const username = localStorage.getItem('username');
+	//Load ANY user, or fallback to myself
+	const params = new URLSearchParams(window.location.search);
+	const username = params.get('user') || localStorage.getItem('username');
 	if (!username) return;
 
-	//since the profile variable is called outside the try block, we need the scope to be global.
+	const me = localStorage.getItem('username');
+
 	let profile;
 
-	//fetch and render profile info.
 	try {
-		({ data: profile } = await readProfile(username));
-		document.getElementById('profile-username').textContent = profile.name;
-		document.getElementById('profile-email').textContent = profile.email;
-		document.getElementById('avatar-img').src = profile.avatar?.url || '';
-		document.getElementById('banner-img').src = profile.banner?.url || '';
+		const { data } = await readProfile(username);
+		profile = data;
 	} catch (err) {
 		console.error('Failed to load profile', err);
+		return;
+	}
+
+	const isMyProfile = username === me;
+	//check if i am allready following the user(case insensitive)
+	let isFollowing = profile.following.some((u) => u.name.toLowerCase() === me.toLowerCase());
+
+	//Render profile info.
+	document.getElementById('profile-username').textContent = profile.name;
+	document.getElementById('profile-email').textContent = profile.email;
+	document.getElementById('avatar-img').src = profile.avatar?.url || '';
+	document.getElementById('banner-img').src = profile.banner?.url || '';
+
+	//render follow/unfollow button if it is NOT my profile.
+	if (!isMyProfile) {
+		const actions = document.getElementById('profile-actions');
+		const btn = document.createElement('button');
+		btn.id = 'follow-btn';
+		btn.textContent = isFollowing ? 'Unfollow' : 'Follow';
+		actions.appendChild(btn);
+
+		//implement toggle functionality.
+		btn.addEventListener('click', async () => {
+			try {
+				if (isFollowing) {
+					await unfollowUser(username);
+					btn.textContent = 'Follow';
+					isFollowing = false;
+				} else {
+					await followUser(username);
+					btn.textContent = 'Unfollow';
+					isFollowing = true;
+				}
+			} catch (err) {
+				console.error('Follow toggle failed', err);
+				alert('Could not update follow status');
+			}
+		});
 	}
 
 	//Pre-fill update form

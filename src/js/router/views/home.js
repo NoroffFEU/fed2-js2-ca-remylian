@@ -20,7 +20,7 @@ authGuard();
 			<h2>${post.title}</h2>
 			${post.media?.url || post.media ? `<img src="${post.media.url || post.media}" alt="Banner for ${post.title}" class="post-media" />` : ''}
 			<p>${post.body}</p>
-			<p><small>By ${post.author?.name}</small></p>
+			<p><small>By <a href="/profile/?user=${encodeURIComponent(post.author.name)}" class="post-author">${post.author.name}</a></small></p>
 			<a href="/post/?id=${post.id}">View</a>
 			<a href="/post/edit/?id=${post.id}">Edit</a>
 			<button class="delete-button" data-post-id="${post.id}">Delete</button>`;

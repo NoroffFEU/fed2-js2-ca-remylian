@@ -1,10 +1,10 @@
 import { apiRequest } from '../apiClient';
 import { API_SOCIAL_PROFILES } from '../constants';
 
-//function to fetch user profile by username.
+//function to load a profile, and check whether I am following them.
 
-export async function readProfile(username) {
-	const url = `${API_SOCIAL_PROFILES}/${username}`;
+export async function readProfile(name) {
+	const url = `${API_SOCIAL_PROFILES}/${name}?_following=true`;
 	return await apiRequest(url, 'GET');
 }
 
