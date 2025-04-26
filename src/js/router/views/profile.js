@@ -14,6 +14,7 @@ authGuard();
 	if (!username) return;
 
 	const me = localStorage.getItem('username');
+	const isMyProfile = username === me;
 
 	let profile;
 
@@ -24,10 +25,8 @@ authGuard();
 		console.error('Failed to load profile', err);
 		return;
 	}
-
-	const isMyProfile = username === me;
 	//check if i am allready following the user(case insensitive)
-	let isFollowing = profile.following.some((u) => u.name.toLowerCase() === me.toLowerCase());
+	let isFollowing = Array.isArray(profile.followers) && profile.followers.some((u) => u.name.toLowerCase() === me.toLowerCase());
 
 	//Render profile info.
 	document.getElementById('profile-username').textContent = profile.name;
@@ -38,6 +37,7 @@ authGuard();
 	//render follow/unfollow button if it is NOT my profile.
 	if (!isMyProfile) {
 		const actions = document.getElementById('profile-actions');
+		actions.innerHTML = ''; //to avoid appending multiple buttons.
 		const btn = document.createElement('button');
 		btn.id = 'follow-btn';
 		btn.textContent = isFollowing ? 'Unfollow' : 'Follow';
