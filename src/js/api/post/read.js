@@ -23,7 +23,7 @@ export async function readPost(id) {
 export async function readPosts(limit = 50, page = 1, tag) {
 	let query = `?limit=${limit}&page=${page}&_author=true`;
 	if (tag) {
-		query += `&tag=${encodeURIComponent(tag)}`;
+		query += `&_tag=${encodeURIComponent(tag)}`;
 	}
 	const url = `${API_SOCIAL_POSTS}${query}`;
 	return await apiRequest(url, 'GET');
@@ -41,7 +41,7 @@ export async function readPosts(limit = 50, page = 1, tag) {
 export async function readPostsByUser(username, limit = 12, page = 1, tag) {
 	let query = `?limit=${limit}&page=${page}`;
 	if (tag) {
-		query += `&tag=${encodeURIComponent(tag)}`;
+		query += `&_tag=${encodeURIComponent(tag)}`;
 	}
 
 	const url = `${API_SOCIAL_PROFILES}/${username}/posts${query}`;
