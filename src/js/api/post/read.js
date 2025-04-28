@@ -4,7 +4,7 @@ import { API_SOCIAL_POSTS, API_SOCIAL_PROFILES } from '../constants';
 /**
  * Fetches a single post by its ID
  * @param {string} id - the ID of the post.
- * @returns {Promise<object} - The post data.
+ * @returns {Promise<object>} - The post data.
  */
 
 export async function readPost(id) {
@@ -17,7 +17,7 @@ export async function readPost(id) {
  * @param {number} [limit=12] - Number of posts per page.
  * @param {number} [page=1] - page number.
  * @param {string} [tag] - optional tag, to filter posts
- * @returns {Promise<object} - the post data.
+ * @returns {Promise<object>} - the post data.
  */
 
 export async function readPosts(limit = 50, page = 1, tag) {
@@ -35,7 +35,7 @@ export async function readPosts(limit = 50, page = 1, tag) {
  * @param {number} [limit=12] - number of posts per page.
  * @param {number} [page=1] - page number
  * @param {string} [tag] - Optional tag, to filter posts
- * @returns {Promise<object} - the usesr's post data.
+ * @returns {Promise<object>} - the usesr's post data.
  */
 
 export async function readPostsByUser(username, limit = 12, page = 1, tag) {

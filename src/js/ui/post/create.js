@@ -1,5 +1,11 @@
 import { createPost } from '../../api/post/create.js';
 
+/**
+ * Handle the “Create Post” form submission:
+ * @param {SubmitEvent} event — the form’s submit event
+ * @returns {Promise<void>}
+ */
+
 export async function onCreatePost(event) {
 	event.preventDefault();
 	const form = event.target;
