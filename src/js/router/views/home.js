@@ -1,6 +1,7 @@
 import { authGuard } from '../../utilities/authGuard';
 import { onDeletePost } from '../../ui/post/delete';
 import { readPosts } from '../../api/post/read';
+import { searchPosts } from '../../api/post/search';
 import { onLogout } from '../../ui/global/logout';
 import { initSearch } from '../../ui/search';
 
@@ -9,9 +10,8 @@ authGuard();
 const container = document.getElementById('posts-container');
 const logoutBtn = document.getElementById('logout-button');
 
-/**
- * Renders an array of post objects into the #posts-container
- */
+// Render an array of post objects into the #posts-container
+
 function renderPosts(posts) {
 	container.innerHTML = '';
 
@@ -35,30 +35,38 @@ function renderPosts(posts) {
 		container.appendChild(card);
 	});
 
-	// Hook up all delete‐buttons
 	container.querySelectorAll('.delete-button').forEach((btn) => btn.addEventListener('click', onDeletePost));
 }
 
 /**
- * Fetches posts (optionally filtered by tag) and renders them
+ * Load feed posts, either full list or with search, then render them.
+ *
+ * @param {string} [query]      If provided, does a full-text search.
+ * @param {number} [limit=25]   Posts per page.
+ * @param {number} [page=1]     Page number.
  */
-async function loadAndRender(limit = 25, page = 1, tag) {
+
+async function loadAndRender(query = '', limit = 25, page = 1) {
 	try {
-		const { data: posts } = await readPosts(limit, page, tag);
-		renderPosts(posts);
+		let result;
+		if (query) {
+			result = await searchPosts(query, limit, page);
+		} else {
+			result = await readPosts(limit, page);
+		}
+		renderPosts(result.data);
 	} catch (err) {
-		console.error('Error loading feed:', err);
-		container.textContent = 'Failed to load posts. Please try again later.';
+		console.error('Error loading feed', err);
+		container.textContent = 'Failed to load post. Please try again later.';
 	}
 }
 
-// Initialize the search form handler
-initSearch('#search-form', (query) => {
-	console.log('Searching for tag:', query);
-	loadAndRender(25, 1, query);
+// hook up search form to call loadAndRender with query
+initSearch('#search-form', (q) => {
+	loadAndRender(q);
 });
 
-// Initial unfiltered feed load
+//initial feed load.
 loadAndRender();
 
 if (logoutBtn) {
