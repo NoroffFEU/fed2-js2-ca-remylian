@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta
+			name="description"
+			content="Noroff Social – share posts, follow friends, and explore content. A lightweight vanilla-JS front end powered by Noroff’s Social API." />
+		<link rel="icon" href="/fed2-js2-ca-remylian/assets/favicon-BuIV98-7.ico" type="image/x-icon" />
+
+		<meta charset="UTF-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Noroff FED2 JS2 CA</title>
+		<script type="module" crossorigin src="/fed2-js2-ca-remylian/assets/app-CNhhrTQt.js"></script>
+		<link rel="stylesheet" crossorigin href="/fed2-js2-ca-remylian/assets/app-B8_kQJsm.css">
+	</head>
+
+	<body class="form-body">
+		<header>
+			<a href="/">
+				<img class="home-logo" src="/fed2-js2-ca-remylian/images/noroff-logo.png" alt="Noroff Logo" />
+			</a>
+		</header>
+
+		<main>
+			<h1>Register</h1>
+			<form class="register-form forms" name="register">
+				<div class="register-form-username form-field">
+					<label for="name">Name</label>
+					<input
+						id="name"
+						type="text"
+						name="name"
+						required
+						maxlength="20"
+						pattern="^[\w]+$"
+						title="Please enter a username using only letters and numbers"
+						placeholder="Enter username (only letters and numbers)" />
+				</div>
+
+				<div class="register-form-email form-field">
+					<label for="email">Email</label>
+					<input
+						id="email"
+						type="email"
+						name="email"
+						required
+						pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+						title="Please enter a valid noroff.no or stud.noroff.no address"
+						placeholder="enter valid noroff adress" />
+				</div>
+
+				<div class="register-form-pass form-field">
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" required minlength="8" placeholder="enter password (min.8 characters)" />
+				</div>
+
+				<div id="error-message"></div>
+
+				<div class="register-buttons form-buttons">
+					<a href="/auth/login/">To Login</a>
+					<button>Register</button>
+				</div>
+			</form>
+
+			<div id="register-success-msg" class="success-message"></div>
+			<div id="register-spinner" class="spinner" hidden></div>
+		</main>
+		<footer class="form-footer">&copy;Noroff JS2 CA</footer>
+	</body>
+</html>
