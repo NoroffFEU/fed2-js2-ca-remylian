@@ -84,6 +84,4 @@ Contributions are welcome! To contribute:
 
 Feel free to reach out on [GitHub](https://github.com/yourusername).
 
-## License
 
-This project is licensed under the MIT License.
