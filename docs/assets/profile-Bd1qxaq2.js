@@ -3,8 +3,8 @@ import{a as h}from"./authGuard-D1nHpxub.js";import{a as f,e as w}from"./apiClien
         ${e.media?.url?`<img src="${e.media.url}" class="post-media" alt="Banner for ${e.title}" />`:""}
         <p>${e.body}</p>
         <div class="post-card-actions">
-          <a href="/post/?id=${e.id}" class="button">View</a>
+          <a href="post/?id=${e.id}" class="button">View</a>
       `;e.author.name.toLowerCase()===i&&(l+=`
-          <a href="/post/edit/?id=${e.id}" class="button">Edit</a>
+          <a href="post/edit/?id=${e.id}" class="button">Edit</a>
           <button class="button delete-button" data-post-id="${e.id}">Delete</button>
         `),l+="</div>",u.innerHTML=l,s.appendChild(u)}),s.querySelectorAll(".delete-button").forEach(e=>e.addEventListener("click",I))}catch(r){console.error("Failed to load user posts:",r)}document.getElementById("logout-button")?.addEventListener("click",P)})();
