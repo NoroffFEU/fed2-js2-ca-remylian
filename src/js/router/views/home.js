@@ -27,7 +27,7 @@ function renderPosts(posts) {
       <p>${post.body}</p>
       <p><small>
         By 
-        <a href="/profile/?user=${encodeURIComponent(post.author.name)}">
+        <a href="profile/?user=${encodeURIComponent(post.author.name)}">
           ${post.author.name}
         </a>
       </small></p>
@@ -36,7 +36,7 @@ function renderPosts(posts) {
 		if (post.author.name === me) {
 			html += `
 			<div class="post-card-edit">
-      <a href="/post/edit/?id=${post.id}" class="button">Edit</a>
+      <a href="post/edit/?id=${post.id}" class="button">Edit</a>
       <button class="delete-button" data-post-id="${post.id}">Delete</button>
     </div>`;
 		}
