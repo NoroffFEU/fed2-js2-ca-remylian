@@ -16,9 +16,9 @@ body {
 	width: 2rem;
 	height: 2rem;
 	margin: 1rem auto;
-	border-radius: 50%;
-	background-color: #472727;
 	animation: pulse 0.4s infinite ease-in-out;
+	background-color: #472727;
+	border-radius: 50%;
 }
 @keyframes pulse {
 	0% {
@@ -26,11 +26,11 @@ body {
 		opacity: 1;
 	}
 	50% {
-		transform: scale(1.5);
 		opacity: 0.5;
+		transform: scale(1.5);
 	}
 	100% {
-		transform: scale(1);
 		opacity: 1;
+		transform: scale(1);
 	}
 }

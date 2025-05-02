@@ -1,34 +1,33 @@
 .post-container {
-	margin: 1rem auto;
-	width: 80rem;
-	padding: 1.5rem;
+	box-shadow: 2px 2px 2px grey;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	width: 80rem;
+	margin: 1rem auto;
+	padding: 1.5rem;
 	border: 1px solid #4d4938;
-	box-shadow: 2px 2px 2px grey;
 }
 
 .post-container img {
-	margin: 1rem auto;
-	max-width: 100%;
-	width: 70%rem;
-	max-height: 40rem;
 	object-fit: contain;
+	width: 70%rem;
+	max-width: 100%;
+	max-height: 40rem;
+	margin: 1rem auto;
 }
 
 .post-container-info {
+	box-shadow: 0 2px 5px grey;
+	width: 70%;
+	max-width: 100%;
 	margin: 0 auto;
 	border-radius: 4px;
-	max-width: 100%;
-	width: 70%;
-	/* border: 1px solid black; */
-	box-shadow: 0 2px 5px grey;
 }
 
 .post-container-info p {
-	text-align: start;
 	padding: 0.25rem;
+	text-align: start;
 }
 
 .post-actions {
@@ -36,18 +35,18 @@
 }
 
 .post-actions a {
-	text-decoration: none;
-	color: black;
 	margin: 2rem auto;
+	padding: 0.5rem;
 	background-color: #b5c9c4;
 	border: 1px solid black;
-	padding: 0.5rem;
 	border-radius: 4px;
+	color: black;
+	text-decoration: none;
 }
 
 .post-actions a:hover {
-	cursor: pointer;
 	background-color: #96b9b0;
+	cursor: pointer;
 }
 
 .post-logout-btn {
