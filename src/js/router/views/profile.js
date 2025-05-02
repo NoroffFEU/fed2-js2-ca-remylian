@@ -110,11 +110,11 @@ authGuard();
         ${post.media?.url ? `<img src="${post.media.url}" class="post-media" alt="Banner for ${post.title}" />` : ''}
         <p>${post.body}</p>
         <div class="post-card-actions">
-          <a href="post/?id=${post.id}" class="button">View</a>
+          <a href="/post/?id=${post.id}" class="button">View</a>
       `;
 			if (post.author.name.toLowerCase() === me) {
 				html += `
-          <a href="post/edit/?id=${post.id}" class="button">Edit</a>
+          <a href="/post/edit/?id=${post.id}" class="button">Edit</a>
           <button class="button delete-button" data-post-id="${post.id}">Delete</button>
         `;
 			}

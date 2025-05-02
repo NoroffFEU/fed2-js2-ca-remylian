@@ -41,9 +41,8 @@ export async function onLogin(event) {
 
 		// wait a moment for the user to read
 
-		const BASE = import.meta.env.BASE_URL;
 		setTimeout(() => {
-			window.location.href = `${BASE}`;
+			window.location.href = '/';
 		}, 2000);
 	} catch (err) {
 		// hide spinner, show error

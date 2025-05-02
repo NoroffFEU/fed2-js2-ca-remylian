@@ -31,7 +31,7 @@ function renderPosts(posts) {
           ${post.author.name}
         </a>
       </small></p>
-      <a class="post-card-view" href="/post/?id=${post.id}">View Post</a>`;
+      <a class="post-card-view" href="post/?id=${post.id}">View Post</a>`;
 
 		if (post.author.name === me) {
 			html += `

@@ -33,7 +33,7 @@ authGuard();
         <p>${post.body}</p>
         <p><small>
           By
-          <a href="profile/?user=${encodeURIComponent(post.author.name)}">
+          <a href="/profile/?user=${encodeURIComponent(post.author.name)}">
             ${post.author.name}
           </a>
         </small></p>
@@ -41,9 +41,9 @@ authGuard();
       <div class="post-actions">
         ${
 					isMyPost
-						? `<a href="post/edit/?id=${post.id}" class="button">Edit</a>
+						? `<a href="/post/edit/?id=${post.id}" class="button">Edit</a>
                <button id="delete-button" class="button">Delete</button>`
-						: `<a href="/fed2-js2-ca-remylian/" class="button">Back to Feed</a>`
+						: `<a href="/" class="button">Back to Feed</a>`
 				}
       </div>
     `;
@@ -64,7 +64,7 @@ authGuard();
 			});
 		}
 	} catch (err) {
-		console.error('Fialed to load post', err);
+		console.error('Failed to load post', err);
 	} finally {
 		spinner.hidden = true;
 	}
