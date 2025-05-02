@@ -1,4 +1,47 @@
+// import { loginUser } from '../../api/auth/login.js';
+
+// export async function onLogin(event) {
+// 	event.preventDefault();
+
+// 	const form = event.target;
+// 	const email = form.elements.email.value.trim();
+// 	const password = form.elements.password.value;
+// 	const credentials = { email, password };
+
+// 	try {
+// 		const loginResponse = await loginUser(credentials);
+// 		console.log('Login successful:', loginResponse);
+
+// 		const { data: userData } = loginResponse;
+// 		if (userData && userData.accessToken) {
+// 			localStorage.setItem('accessToken', userData.accessToken);
+// 			localStorage.setItem('username', userData.name);
+// 			console.log('Access token stored in localStorage:', userData.accessToken);
+// 		} else {
+// 			console.warn('No access token found in the response.');
+
+// 			const keyResponse = await createApiKey();
+// 			if (keyResponse && keyResponse.key) {
+// 				console.log('API key stored:', keyResponse.key);
+// 			}
+// 		}
+
+// 		// Redirect the user to the home/feed after login:
+// 		setTimeout(() => {
+// 			window.location.href = '/';
+// 		}, 2000);
+// 	} catch (error) {
+// 		console.error('Login failed:', error);
+// 		const errorElement = document.getElementById('error-message');
+// 		if (errorElement) {
+// 			errorElement.textContent = error.message;
+// 		}
+// 	}
+// }
+
+// src/ui/auth/login.js
 import { loginUser } from '../../api/auth/login.js';
+import { createApiKey } from '../../api/auth/key.js';
 
 export async function onLogin(event) {
 	event.preventDefault();
@@ -6,35 +49,46 @@ export async function onLogin(event) {
 	const form = event.target;
 	const email = form.elements.email.value.trim();
 	const password = form.elements.password.value;
-	const credentials = { email, password };
+	const creds = { email, password };
+
+	const errorElem = document.getElementById('error-message');
+	const successElem = document.getElementById('login-success-msg');
+	const spinnerElem = document.getElementById('login-spinner');
+
+	// reset messages
+	errorElem.textContent = '';
+	successElem.textContent = '';
+
+	// show spinner
+	spinnerElem.hidden = false;
 
 	try {
-		const loginResponse = await loginUser(credentials);
-		console.log('Login successful:', loginResponse);
+		const { data: userData } = await loginUser(creds);
 
-		const { data: userData } = loginResponse;
-		if (userData && userData.accessToken) {
-			localStorage.setItem('accessToken', userData.accessToken);
-			localStorage.setItem('username', userData.name);
-			console.log('Access token stored in localStorage:', userData.accessToken);
-		} else {
-			console.warn('No access token found in the response.');
-
-			const keyResponse = await createApiKey();
-			if (keyResponse && keyResponse.key) {
-				console.log('API key stored:', keyResponse.key);
-			}
+		if (!userData?.accessToken) {
+			throw new Error('No access token returned.');
 		}
 
-		// Redirect the user to the home/feed after login:
+		// store token & username
+		localStorage.setItem('accessToken', userData.accessToken);
+		localStorage.setItem('username', userData.name);
+
+		// optionally get API key
+		const keyResponse = await createApiKey();
+		console.log('API key:', keyResponse?.key);
+
+		// hide spinner, show success
+		spinnerElem.hidden = true;
+		successElem.textContent = '✅ Login successful! Redirecting…';
+
+		// wait a moment for the user to read
 		setTimeout(() => {
 			window.location.href = '/';
 		}, 2000);
-	} catch (error) {
-		console.error('Login failed:', error);
-		const errorElement = document.getElementById('error-message');
-		if (errorElement) {
-			errorElement.textContent = error.message;
-		}
+	} catch (err) {
+		// hide spinner, show error
+		spinnerElem.hidden = true;
+		console.error('Login error:', err);
+		errorElem.textContent = err.message;
 	}
 }

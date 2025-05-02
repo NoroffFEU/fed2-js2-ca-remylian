@@ -1,51 +1,74 @@
-import { authGuard } from '../../utilities/authGuard.js';
-import { readPost } from '../../api/post/read.js';
-import { onDeletePost } from '../../ui/post/delete.js';
-import { onUpdatePost } from '../../ui/post/update.js';
-import { onLogout } from '../../ui/global/logout.js';
+import { authGuard } from '../../utilities/authGuard';
+import { readPost } from '../../api/post/read';
+import { onDeletePost } from '../../ui/post/delete';
+import { onLogout } from '../../ui/global/logout';
 
 authGuard();
 
-const logoutBtn = document.getElementById('logout-button');
-if (logoutBtn) logoutBtn.addEventListener('click', onLogout);
+(async function renderSinglePost() {
+	const params = new URLSearchParams(window.location.search);
+	const postId = params.get('id');
+	if (!postId) {
+		window.location.href = '/';
+		return;
+	}
 
-// Pull the `id` param from the query string
-const params = new URLSearchParams(window.location.search);
-const postId = params.get('id');
-if (!postId) {
-	// no id → back to feed
-	window.location.href = '/';
-}
+	const spinner = document.getElementById('post-spinner');
+	const container = document.getElementById('single-post');
 
-(async function renderPost() {
-	const container = document.getElementById('post-container');
-	container.innerHTML = '<p>Loading…</p>';
-
+	let post;
 	try {
-		const { data: post } = await readPost(postId);
+		spinner.hidden = false;
+		container.textContent = '';
+		({ data: post } = await readPost(postId));
 
-		container.innerHTML = `
-      ${
-				post.media?.url
-					? `<img src="${post.media.url}"
-                alt="Banner for ${post.title}"
-                class="post-media" />`
-					: ''
-			}
-      <h1>${post.title}</h1>
-      <p><small>By ${post.author?.name || 'Unknown'}</small></p>
-      <div>${post.body}</div>
-      ${post.tags?.length ? `<p>Tags: ${post.tags.map((t) => `<span class="tag">${t}</span>`).join(' ')}</p>` : ''}
+		const me = localStorage.getItem('username')?.toLowerCase();
+		const isMyPost = post.author.name.toLowerCase() === me;
+
+		// build the HTML
+		const html = `
+      ${post.media?.url ? `<img src="${post.media.url}" alt="Banner for ${post.title}">` : ''}
+      <div class="post-container-info">
+        <h1>${post.title}</h1>
+        <p>${post.body}</p>
+        <p><small>
+          By
+          <a href="/profile/?user=${encodeURIComponent(post.author.name)}">
+            ${post.author.name}
+          </a>
+        </small></p>
+      </div>
       <div class="post-actions">
-        <a href="/post/edit/?id=${post.id}">Edit</a>
-        <button id="delete-button" data-post-id="${post.id}">Delete</button>
+        ${
+					isMyPost
+						? `<a href="/post/edit/?id=${post.id}" class="button">Edit</a>
+               <button id="delete-button" class="button">Delete</button>`
+						: `<a href="/" class="button">Back to Feed</a>`
+				}
       </div>
     `;
 
-		const delBtn = document.getElementById('delete-button');
-		if (delBtn) delBtn.addEventListener('click', onDeletePost);
+		// render it
+		container.innerHTML = html;
+
+		// If this is my post, hook up the delete button
+		if (isMyPost) {
+			container.querySelector('#delete-button').addEventListener('click', async () => {
+				try {
+					// onDeletePost expects an event-like object; here, we simulate an event.
+					await onDeletePost({ target: { getAttribute: () => post.id } });
+				} catch (e) {
+					console.error(e);
+					alert('Failed to delete post');
+				}
+			});
+		}
 	} catch (err) {
-		console.error('Failed to load post:', err);
-		container.innerHTML = `<p>Error: ${err.message}</p>`;
+		console.error('Fialed to load post', err);
+	} finally {
+		spinner.hidden = true;
 	}
+
+	const logoutBtn = document.getElementById('logout-button');
+	if (logoutBtn) logoutBtn.addEventListener('click', onLogout);
 })();

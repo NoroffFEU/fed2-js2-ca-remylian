@@ -24,8 +24,10 @@ export async function apiRequest(url, method = 'GET', body = null) {
 	try {
 		const response = await fetch(url, options);
 		if (!response.ok) {
+			if (response.status === 204) return {};
 			await handleApiError(response);
 		}
+		if (response.status === 204) return {};
 		return await response.json();
 	} catch (error) {
 		console.error('Error during API request:', error);

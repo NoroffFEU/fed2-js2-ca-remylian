@@ -39,7 +39,7 @@ export async function readPosts(limit = 50, page = 1, tag) {
  */
 
 export async function readPostsByUser(username, limit = 12, page = 1, tag) {
-	let query = `?limit=${limit}&page=${page}`;
+	let query = `?limit=${limit}&page=${page}&_author=true`;
 	if (tag) {
 		query += `&_tag=${encodeURIComponent(tag)}`;
 	}

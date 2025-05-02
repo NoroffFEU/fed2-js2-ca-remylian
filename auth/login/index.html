@@ -9,20 +9,37 @@
 	</head>
 
 	<body>
-		<h1>Login</h1>
-		<form name="login">
-			<div>
-				<label for="email">Email</label>
-				<input id="email" type="email" name="email" required />
-			</div>
+		<header>
+			<a href="/">
+				<img class="home-logo" src="/images/noroff-logo.png" alt="Noroff Logo" />
+			</a>
+		</header>
 
-			<div>
-				<label for="password">Password</label>
-				<input type="password" name="password" id="password" required />
-			</div>
+		<main>
+			<h1>Login</h1>
+			<form class="login-form" name="login">
+				<div class="login-form-email">
+					<label for="email">Email</label>
+					<input id="email" type="email" name="email" required placeholder="valid noroff email" />
+				</div>
 
-			<a href="/auth/register/">Register</a>
-			<button>Login</button>
-		</form>
+				<div class="login-form-pass">
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" required />
+				</div>
+
+				<div id="error-message" class="error-message"></div>
+
+				<div class="login-buttons">
+					<a href="/auth/register/">Register New User</a>
+					<button>Login</button>
+				</div>
+			</form>
+
+			<div id="login-success-msg"></div>
+			<div id="login-spinner" class="spinner" hidden></div>
+		</main>
+
+		<footer>&copy;Noroff JS2 CA</footer>
 	</body>
 </html>

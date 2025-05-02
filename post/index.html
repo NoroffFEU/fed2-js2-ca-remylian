@@ -7,14 +7,17 @@
 		<script type="module" src="/src/app.js"></script>
 	</head>
 	<body>
-		<nav>
-			<a href="/">Home</a>
-			<a href="/post/create/">New Post</a>
-			<button id="logout-button">Logout</button>
-		</nav>
+		<a href="/"><img class="home-logo" src="/images/noroff-logo.png" alt="Noroff Logo" /></a>
+		<nav class="single-post-nav"></nav>
 
-		<main id="post-container">
-			<!-- container for post-data -->
+		<main>
+			<div id="post-spinner" class="spinner" hidden></div>
+
+			<article id="single-post" class="post-container"></article>
+
+			<button id="logout-button" class="post-logout-btn">Logout</button>
 		</main>
+
+		<footer>&copy;Noroff JS2 CA</footer>
 	</body>
 </html>

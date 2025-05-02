@@ -9,6 +9,8 @@ authGuard();
 
 const container = document.getElementById('posts-container');
 const logoutBtn = document.getElementById('logout-button');
+const feedSpinner = document.getElementById('feed-spinner');
+const me = localStorage.getItem('username');
 
 // Render an array of post objects into the #posts-container
 
@@ -18,9 +20,10 @@ function renderPosts(posts) {
 	posts.forEach((post) => {
 		const card = document.createElement('div');
 		card.classList.add('post-card');
-		card.innerHTML = `
-      ${post.media?.url ? `<img src="${post.media.url}" class="post-media" alt="Banner for ${post.title}" />` : ''}
-      <h2>${post.title}</h2>
+
+		let html = ` 
+			<h2>${post.title}</h2>
+			${post.media?.url ? `<img src="${post.media.url}" class="post-media" alt="Banner for ${post.title}" />` : ''}
       <p>${post.body}</p>
       <p><small>
         By 
@@ -28,10 +31,18 @@ function renderPosts(posts) {
           ${post.author.name}
         </a>
       </small></p>
-      <a href="/post/?id=${post.id}">View</a>
-      <a href="/post/edit/?id=${post.id}">Edit</a>
+      <a class="post-card-view" href="/post/?id=${post.id}">View Post</a>`;
+
+		if (post.author.name === me) {
+			html += `
+			<div class="post-card-edit">
+      <a href="/post/edit/?id=${post.id}" class="button">Edit</a>
       <button class="delete-button" data-post-id="${post.id}">Delete</button>
-    `;
+    </div>`;
+		}
+
+		card.innerHTML = html;
+
 		container.appendChild(card);
 	});
 
@@ -42,22 +53,22 @@ function renderPosts(posts) {
  * Load feed posts, either full list or with search, then render them.
  *
  * @param {string} [query]      If provided, does a full-text search.
- * @param {number} [limit=25]   Posts per page.
+ * @param {number} [limit=50]   Posts per page.
  * @param {number} [page=1]     Page number.
  */
 
-async function loadAndRender(query = '', limit = 25, page = 1) {
+async function loadAndRender(query = '', limit = 50, page = 1) {
+	feedSpinner.hidden = false;
+
 	try {
-		let result;
-		if (query) {
-			result = await searchPosts(query, limit, page);
-		} else {
-			result = await readPosts(limit, page);
-		}
+		let result = query ? await searchPosts(query, limit, page) : await readPosts(limit, page);
+
 		renderPosts(result.data);
 	} catch (err) {
 		console.error('Error loading feed', err);
 		container.textContent = 'Failed to load post. Please try again later.';
+	} finally {
+		feedSpinner.hidden = true;
 	}
 }
 

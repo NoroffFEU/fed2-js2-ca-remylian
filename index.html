@@ -9,23 +9,26 @@
 	</head>
 
 	<body>
-		<img src="/images/noroff-logo.png" alt="Noroff Logo" />
+		<img class="home-logo" src="/images/noroff-logo.png" alt="Noroff Logo" />
+		<h1>Welcome! Feel free to browse our wall of posts!</h1>
 
-		<h1>Home</h1>
-
-		<a href="/profile/">My Profile</a>
-		<a href="/auth/login/">Login</a>
-		<a href="/auth/register/">Register</a>
-		<button id="logout-button">Logout</button>
+		<nav class="home-nav">
+			<a href="/profile/">Profile</a>
+			<button id="logout-button">Logout</button>
+		</nav>
 
 		<form id="search-form">
 			<input type="search" id="search-input" placeholder="search posts" />
 			<button>Go</button>
 		</form>
 
-		<section id="feed">
+		<div id="feed-spinner" class="spinner" hidden></div>
+
+		<section id="feed" class="feed">
 			<h2>All Posts</h2>
-			<div id="posts-container"></div>
+			<div id="posts-container" class="feed-post-container"></div>
 		</section>
+
+		<footer>&copy;Noroff JS2 CA</footer>
 	</body>
 </html>

@@ -9,29 +9,28 @@
 	<body>
 		<h1>Create Post</h1>
 
-		<form name="createPost">
-			<div>
+		<form class="create-form" name="createPost">
+			<div class="create-form-field">
 				<label for="title">Title:</label>
 				<input type="text" name="title" id="title" required />
 			</div>
-			<div>
+			<div class="create-form-field">
 				<label for="body">Body:</label>
 				<textarea name="body" id="body" required></textarea>
 			</div>
-			<div>
+			<div class="create-form-field">
 				<label for="tags">Tags (comma separated):</label>
 				<input type="text" name="tags" id="tags" />
 			</div>
-			<div>
+			<div class="create-form-field">
 				<label for="media">Banner URL (optional):</label>
 				<input type="text" name="media" id="media" />
 			</div>
-			<!-- <div>
-				<label for="avatar">Avatar URL (optional):</label>
-				<input type="text" name="avatar" id="avatar" />
-			</div> -->
 			<div id="error-message"></div>
-			<button type="submit">Create Post</button>
+			<div id="Create-controls">
+				<button type="submit" id="create-btn" class="create-button">Create Post</button>
+				<div id="create-spinner" class="spinner" hidden></div>
+			</div>
 		</form>
 	</body>
 </html>

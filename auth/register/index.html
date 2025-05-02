@@ -9,43 +9,56 @@
 	</head>
 
 	<body>
+		<header>
+			<a href="/">
+				<img class="home-logo" src="/images/noroff-logo.png" alt="Noroff Logo" />
+			</a>
+		</header>
 		<h1>Register</h1>
 
-		<form name="register">
-			<div>
-				<label for="name">Name</label>
-				<input
-					id="name"
-					type="text"
-					name="name"
-					required
-					maxlength="20"
-					pattern="^[\w]+$"
-					title="Please enter a username using only letters and numbers"
-					placeholder="Enter username (only letters and numbers)" />
-			</div>
+		<main>
+			<form class="register-form" name="register">
+				<div class="register-form-username regform-div">
+					<label for="name">Name</label>
+					<input
+						id="name"
+						type="text"
+						name="name"
+						required
+						maxlength="20"
+						pattern="^[\w]+$"
+						title="Please enter a username using only letters and numbers"
+						placeholder="Enter username (only letters and numbers)" />
+				</div>
 
-			<div>
-				<label for="email">Email</label>
-				<input
-					id="email"
-					type="email"
-					name="email"
-					required
-					pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
-					title="Please enter a valid noroff.no or stud.noroff.no address"
-					placeholder="enter valid noroff adress" />
-			</div>
+				<div class="register-form-email regform-div">
+					<label for="email">Email</label>
+					<input
+						id="email"
+						type="email"
+						name="email"
+						required
+						pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+						title="Please enter a valid noroff.no or stud.noroff.no address"
+						placeholder="enter valid noroff adress" />
+				</div>
 
-			<div>
-				<label for="password">Password</label>
-				<input type="password" name="password" id="password" required minlength="8" placeholder="enter password (min.8 characters)" />
-			</div>
+				<div class="register-form-pass regform-div">
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" required minlength="8" placeholder="enter password (min.8 characters)" />
+				</div>
 
-			<div id="error-message"></div>
+				<div id="error-message"></div>
 
-			<a href="/auth/login/">Login</a>
-			<button>Register</button>
-		</form>
+				<div class="register-buttons">
+					<a href="/auth/login/">To Login</a>
+					<button>Register</button>
+				</div>
+			</form>
+
+			<div id="register-success-msg" class="success-message"></div>
+			<div id="register-spinner" class="spinner" hidden></div>
+		</main>
+		<footer>&copy;Noroff JS2 CA</footer>
 	</body>
 </html>

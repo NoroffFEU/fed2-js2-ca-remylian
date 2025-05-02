@@ -1,6 +1,40 @@
 @import url(_reset.css);
 @import url(_feed.css);
+@import url(_profile.css);
+@import url(_singlePost.css);
+@import url(_login.css);
+@import url(_register.css);
+@import url(_create.css);
+@import url(_edit.css);
 
-.post-media {
-	max-width: 30rem;
+h1 {
+	padding-top: 0.5rem;
+	text-decoration: underline;
+}
+
+body {
+	background-color: #e9e8e8;
+}
+
+.spinner {
+	width: 2rem;
+	height: 2rem;
+	margin: 1rem auto;
+	border-radius: 50%;
+	background-color: #472727;
+	animation: pulse 0.4s infinite ease-in-out;
+}
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	50% {
+		transform: scale(1.5);
+		opacity: 0.5;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
 }

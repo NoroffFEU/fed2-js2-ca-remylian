@@ -6,42 +6,51 @@
 		<title>My Profile</title>
 		<script type="module" src="/src/app.js"></script>
 	</head>
-	<body>
-		<h1>Profile</h1>
+	<body class="profile-body">
+		<nav>
+			<a href="/">
+				<img class="home-logo" src="/images/noroff-logo.png" alt="Noroff Logo" />
+			</a>
+			<img id="banner-img" class="profile-banner" src="" alt="Banner image" style="max-width: 100%; height: auto" />
+		</nav>
 
-		<!-- Add CSS to apropriate file later -->
-		<section id="profile-info">
-			<img id="banner-img" src="" alt="Banner image" style="max-width: 100%; height: auto" />
-			<img id="avatar-img" src="" alt="Avatar" width="100" height="100" />
-			<h2 id="profile-username"></h2>
-			<p id="profile-email"></p>
-		</section>
+		<section id="profile-info" class="profile-info">
+			<h1>Profile</h1>
+			<div class="profile-user">
+				<h2 id="profile-username"></h2>
+				<img id="avatar-img" class="avatar-img" src="" alt="Avatar" width="100" height="100" />
+				<div id="follow-counter"></div>
+				<p id="profile-email"></p>
 
-		<!-- Container for follow/unfollow button. -->
-		<section id="profile-actions"></section>
+				<details id="profile-update-section">
+					<summary>Update Profile</summary>
 
-		<!-- Update form -->
-		<section id="profile-update">
-			<h3>Update Profile</h3>
-			<form name="updateProfile">
-				<div>
-					<label for="avatar">Avatar URL:</label>
-					<input type="text" name="avatar" id="avatar" placeholder="https://..." />
-				</div>
-				<div>
-					<label for="banner">Banner URL:</label>
-					<input type="text" name="banner" id="banner" placeholder="https://..." />
-				</div>
-				<div id="error-message"></div>
-				<button type="submit">Update Profile</button>
-			</form>
+					<section id="profile-update">
+						<h3>Update Profile Images</h3>
+						<form name="updateProfile" class="profile-update-form">
+							<div>
+								<label for="avatar">Avatar URL:</label>
+								<input type="text" name="avatar" id="avatar" placeholder="https://..." />
+							</div>
+							<div>
+								<label for="banner">Banner URL:</label>
+								<input type="text" name="banner" id="banner" placeholder="https://..." />
+							</div>
+							<div id="error-message"></div>
+							<button type="submit">Update</button>
+						</form>
+					</section>
+				</details>
+				<!-- Container for follow/unfollow button. -->
+				<div id="profile-actions"></div>
+			</div>
 		</section>
 
 		<!-- User's posts -->
-		<section id="user-posts">
-			<h3>Your Posts</h3>
-			<a href="/post/create/"> Create New Post</a>
-			<div id="posts-container"></div>
+		<section id="user-posts" class="user-posts">
+			<h3>My Posts</h3>
+			<a id="create-post-link" class="profile-create-post" href="/post/create/"> Create New Post</a>
+			<div id="posts-container" class="profile-posts"></div>
 		</section>
 	</body>
 </html>

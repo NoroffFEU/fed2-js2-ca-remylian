@@ -4,6 +4,8 @@ export async function onUpdatePost(event) {
 	event.preventDefault();
 
 	const form = event.target;
+	const submitBtn = document.getElementById('edit-btn');
+	const spinner = document.getElementById('edit-spinner');
 
 	const title = form.elements.title.value.trim();
 	const body = form.elements.body.value.trim();
@@ -21,21 +23,22 @@ export async function onUpdatePost(event) {
 	const postData = { title, body, tags, media };
 
 	try {
-		const response = await updatePost(id, postData);
-		console.log('Post updated successfully', response);
+		submitBtn.disabled = true;
+		spinner.hidden = false;
 
-		//user feedback (change to not alert when time)
-		alert('Post updated successfully');
+		await updatePost(id, postData);
 
+		const successMsg = document.getElementById('success-msg');
+		successMsg.textContent = 'Post updated successfully!';
 		// redirect to updated post page
 		setTimeout(() => {
-			window.location.href = `/post/${id}`;
+			window.location.href = `/post/?id=${id}`;
 		}, 2000);
-	} catch (error) {
-		console.error('Error updating post: ', error);
-		const errorElement = document.getElementById('error-message');
-		if (errorElement) {
-			errorElement.textContent = error.message;
-		}
+	} catch (err) {
+		console.error(err);
+		document.getElementById('error-message').textContent = err.message;
+	} finally {
+		submitBtn.disabled = false;
+		spinner.hidden = true;
 	}
 }

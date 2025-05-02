@@ -8,7 +8,10 @@ import { createPost } from '../../api/post/create.js';
 
 export async function onCreatePost(event) {
 	event.preventDefault();
+
 	const form = event.target;
+	const submitBtn = document.getElementById('create-btn');
+	const spinner = document.getElementById('create-spinner');
 
 	// Gather form values
 	const title = form.elements.title.value.trim();
@@ -34,13 +37,18 @@ export async function onCreatePost(event) {
 	}
 
 	try {
-		const response = await createPost(payload);
-		alert('Post created successfully!');
+		submitBtn.disabled = true;
+		spinner.hidden = false;
 
+		await createPost(payload);
+		alert('Post created successfully!');
 		// Redirect to feed
 		window.location.href = '/';
 	} catch (err) {
-		console.error('Error creating post:', err);
+		console.error(err);
 		document.getElementById('error-message').textContent = err.message;
+	} finally {
+		spinner.hidden = true;
+		submitBtn.disabled = false;
 	}
 }
