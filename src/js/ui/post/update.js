@@ -32,7 +32,7 @@ export async function onUpdatePost(event) {
 		successMsg.textContent = 'Post updated successfully!';
 		// redirect to updated post page
 		setTimeout(() => {
-			window.location.href = `post/?id=${id}`;
+			window.location.href = `/post/?id=${id}`;
 		}, 2000);
 	} catch (err) {
 		console.error(err);
