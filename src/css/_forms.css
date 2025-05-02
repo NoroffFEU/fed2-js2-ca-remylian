@@ -1,8 +1,7 @@
 .form-body {
-	min-height: 100vh;
-	min-height: 100dvh;
 	display: flex;
 	flex-direction: column;
+	min-height: 100vh;
 }
 
 .form-footer {
@@ -11,15 +10,15 @@
 }
 
 .forms {
-	width: 30rem;
-	padding: 2rem;
 	display: flex;
 	flex-direction: column;
-	margin: 0 auto;
 	gap: 2rem;
+	width: 30rem;
+	margin: 0 auto;
+	margin-bottom: 2rem;
+	padding: 2rem;
 	border: 1px solid black;
 	border-radius: 8px;
-	margin-bottom: 2rem;
 }
 
 .form-field {
@@ -34,12 +33,12 @@
 }
 
 .form-buttons a {
-	text-decoration: none;
-	background-color: #b5c9c4;
-	color: black;
 	padding: 0.25rem;
-	border-radius: 4px;
+	background-color: #b5c9c4;
 	border: 1px solid black;
+	border-radius: 4px;
+	color: black;
+	text-decoration: none;
 }
 
 .form-buttons a:hover {
