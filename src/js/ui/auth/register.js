@@ -24,7 +24,7 @@ export async function onRegister(event) {
 		successElem.textContent = '✅ Registration successfull. Redirecting...';
 
 		// After successful registration, redirect the user to the login page.
-		const BASE = import.meta.env.BASE_URL;
+
 		setTimeout(() => {
 			window.location.href = `/auth/login/ `;
 		}, 2000);
