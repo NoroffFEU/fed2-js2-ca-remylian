@@ -2,10 +2,10 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	base: '/fed2-js2-ca-remylian/',
+	publicDir: 'public',
 	build: {
-		outDir: 'docs',
-		target: 'esnext',
+		base: '/',
+		target: 'es2015',
 		rollupOptions: {
 			input: {
 				main: resolve(__dirname, './index.html'),
