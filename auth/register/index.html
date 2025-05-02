@@ -8,17 +8,17 @@
 		<script type="module" src="/src/app.js"></script>
 	</head>
 
-	<body>
+	<body class="form-body">
 		<header>
 			<a href="/">
 				<img class="home-logo" src="/images/noroff-logo.png" alt="Noroff Logo" />
 			</a>
 		</header>
-		<h1>Register</h1>
 
 		<main>
-			<form class="register-form" name="register">
-				<div class="register-form-username regform-div">
+			<h1>Register</h1>
+			<form class="register-form forms" name="register">
+				<div class="register-form-username form-field">
 					<label for="name">Name</label>
 					<input
 						id="name"
@@ -31,7 +31,7 @@
 						placeholder="Enter username (only letters and numbers)" />
 				</div>
 
-				<div class="register-form-email regform-div">
+				<div class="register-form-email form-field">
 					<label for="email">Email</label>
 					<input
 						id="email"
@@ -43,14 +43,14 @@
 						placeholder="enter valid noroff adress" />
 				</div>
 
-				<div class="register-form-pass regform-div">
+				<div class="register-form-pass form-field">
 					<label for="password">Password</label>
 					<input type="password" name="password" id="password" required minlength="8" placeholder="enter password (min.8 characters)" />
 				</div>
 
 				<div id="error-message"></div>
 
-				<div class="register-buttons">
+				<div class="register-buttons form-buttons">
 					<a href="/auth/login/">To Login</a>
 					<button>Register</button>
 				</div>
@@ -59,6 +59,6 @@
 			<div id="register-success-msg" class="success-message"></div>
 			<div id="register-spinner" class="spinner" hidden></div>
 		</main>
-		<footer>&copy;Noroff JS2 CA</footer>
+		<footer class="form-footer">&copy;Noroff JS2 CA</footer>
 	</body>
 </html>

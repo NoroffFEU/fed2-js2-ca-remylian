@@ -8,7 +8,7 @@
 		<script type="module" src="/src/app.js"></script>
 	</head>
 
-	<body>
+	<body class="form-body">
 		<header>
 			<a href="/">
 				<img class="home-logo" src="/images/noroff-logo.png" alt="Noroff Logo" />
@@ -17,20 +17,21 @@
 
 		<main>
 			<h1>Login</h1>
-			<form class="login-form" name="login">
-				<div class="login-form-email">
+
+			<form class="login-form forms" name="login">
+				<div class="login-form-email form-field">
 					<label for="email">Email</label>
 					<input id="email" type="email" name="email" required placeholder="valid noroff email" />
 				</div>
 
-				<div class="login-form-pass">
+				<div class="login-form-pass form-field">
 					<label for="password">Password</label>
 					<input type="password" name="password" id="password" required />
 				</div>
 
 				<div id="error-message" class="error-message"></div>
 
-				<div class="login-buttons">
+				<div class="login-buttons form-buttons">
 					<a href="/auth/register/">Register New User</a>
 					<button>Login</button>
 				</div>
@@ -40,6 +41,6 @@
 			<div id="login-spinner" class="spinner" hidden></div>
 		</main>
 
-		<footer>&copy;Noroff JS2 CA</footer>
+		<footer class="form-footer">&copy;Noroff JS2 CA</footer>
 	</body>
 </html>

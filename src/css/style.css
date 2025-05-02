@@ -2,11 +2,7 @@
 @import url(_feed.css);
 @import url(_profile.css);
 @import url(_singlePost.css);
-@import url(_login.css);
-@import url(_register.css);
-@import url(_create.css);
-@import url(_edit.css);
-
+@import url(_forms.css);
 h1 {
 	padding-top: 0.5rem;
 	text-decoration: underline;

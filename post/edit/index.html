@@ -8,33 +8,39 @@
 		<script type="module" src="/src/app.js"></script>
 	</head>
 
-	<body>
-		<h1>Edit Post</h1>
+	<body class="form-body">
+		<header></header>
 
-		<form class="edit-form" name="editPost">
-			<div class="edit-form-field">
-				<label for="title">Title:</label>
-				<input type="text" name="title" id="title" required />
-			</div>
-			<div class="edit-form-field">
-				<label for="body">Body:</label>
-				<textarea name="body" id="body" required></textarea>
-			</div>
-			<div class="edit-form-field">
-				<label for="tags">Tags (comma separated):</label>
-				<input type="text" name="tags" id="tags" />
-			</div>
-			<div class="edit-form-field">
-				<label for="media">Banner URL (optional):</label>
-				<input type="text" name="media" id="media" />
-			</div>
-			<div id="edit-controls">
-				<button type="submit" id="edit-btn" class="edit-button">Update Post</button>
-				<div id="edit-spinner" class="spinner" hidden></div>
-			</div>
+		<main>
+			<h1>Edit Post</h1>
 
-			<div id="success-msg"></div>
-			<div id="error-message"></div>
-		</form>
+			<form class="edit-form forms" name="editPost">
+				<div class="form-field">
+					<label for="title">Title:</label>
+					<input type="text" name="title" id="title" required />
+				</div>
+				<div class="form-field">
+					<label for="body">Body:</label>
+					<textarea name="body" id="body" required></textarea>
+				</div>
+				<div class="form-field">
+					<label for="tags">Tags (comma separated):</label>
+					<input type="text" name="tags" id="tags" />
+				</div>
+				<div class="form-field">
+					<label for="media">Banner URL (optional):</label>
+					<input type="text" name="media" id="media" />
+				</div>
+				<div id="edit-controls">
+					<button type="submit" id="edit-btn" class="edit-button form-button">Update Post</button>
+					<div id="edit-spinner" class="spinner" hidden></div>
+				</div>
+
+				<div id="success-msg"></div>
+				<div id="error-message"></div>
+			</form>
+		</main>
+
+		<footer class="form-footer">&copy;Noroff JS2 CA</footer>
 	</body>
 </html>
