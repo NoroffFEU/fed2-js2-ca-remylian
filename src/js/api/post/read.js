@@ -14,7 +14,7 @@ export async function readPost(id) {
 
 /**
  * Fetches multiple posts with pagination and an optional tag.
- * @param {number} [limit=12] - Number of posts per page.
+ * @param {number} [limit=50] - Number of posts per page.
  * @param {number} [page=1] - page number.
  * @param {string} [tag] - optional tag, to filter posts
  * @returns {Promise<object>} - the post data.

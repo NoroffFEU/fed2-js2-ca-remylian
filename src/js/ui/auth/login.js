@@ -39,13 +39,11 @@ export async function onLogin(event) {
 		spinnerElem.hidden = true;
 		successElem.textContent = '✅ Login successful! Redirecting…';
 
-		// wait a moment for the user to read
-
+		// redirect to feed
 		setTimeout(() => {
 			window.location.href = '/';
 		}, 2000);
 	} catch (err) {
-		// hide spinner, show error
 		spinnerElem.hidden = true;
 		console.error('Login error:', err);
 		errorElem.textContent = err.message;

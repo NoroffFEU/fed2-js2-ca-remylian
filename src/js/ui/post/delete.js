@@ -3,7 +3,6 @@ import { deletePost } from '../../api/post/delete';
 export async function onDeletePost(event) {
 	event.preventDefault();
 
-	//make sure the delete button has a data attribute 'data-post-id' with the post's ID.
 	const postId = event.target.getAttribute('data-post-id');
 	if (!postId) {
 		console.error('No post ID provided for deletion');

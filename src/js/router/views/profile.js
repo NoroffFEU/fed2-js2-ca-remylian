@@ -17,7 +17,6 @@ authGuard();
 	const me = localStorage.getItem('username')?.toLowerCase();
 	const isMyProfile = profileUsername.toLowerCase() === me;
 
-	//  remove "Create Post" link if not my profile
 	if (!isMyProfile) {
 		document.getElementById('create-post-link')?.remove();
 	}
@@ -32,7 +31,7 @@ authGuard();
 	}
 	const { followers = [], following = [] } = profile;
 
-	//  show follower count (updates later)
+	//  show follower count (updates further down)
 	const countEl = document.getElementById('follow-counter');
 	if (countEl) {
 		countEl.textContent = `Followers: ${followers.length} · Following: ${following.length}`;
@@ -55,7 +54,7 @@ authGuard();
 		updSection?.remove();
 	}
 
-	//  follow/unfollow button on *other* profiles
+	//  follow/unfollow button on OTHER profiles
 	if (!isMyProfile) {
 		const actions = document.getElementById('profile-actions');
 		const btn = document.createElement('button');
@@ -127,6 +126,6 @@ authGuard();
 		console.error('Failed to load user posts:', err);
 	}
 
-	// 9) logout
+	//logout
 	document.getElementById('logout-button')?.addEventListener('click', onLogout);
 })();

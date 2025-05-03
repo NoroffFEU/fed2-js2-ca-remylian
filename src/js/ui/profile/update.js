@@ -8,7 +8,6 @@ export async function onUpdateProfile(event) {
 	const rawBanner = form.elements.banner.value.trim();
 	const username = localStorage.getItem('username');
 
-	// Build a payload matching the API spec
 	const payload = {};
 
 	if (rawAvatar) {

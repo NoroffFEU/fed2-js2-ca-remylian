@@ -31,7 +31,6 @@ export async function onRegister(event) {
 	} catch (error) {
 		console.error('Registration failed:', error);
 
-		// update the UI with an error message.
 		const errorElement = document.getElementById('error-message');
 		if (errorElement) {
 			errorElement.textContent = error.message;

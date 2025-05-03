@@ -3,11 +3,9 @@
 // You may change the behaviour or approach of this file if you choose
 
 const BASE = import.meta.env.BASE_URL;
-console.log({ BASE, rawpath: window.location.pathname });
 
 export default async function router(rawpath = window.location.pathname) {
 	const pathname = rawpath.replace(BASE, '/');
-	console.log('→ routing to', pathname);
 
 	switch (pathname) {
 		case '/':

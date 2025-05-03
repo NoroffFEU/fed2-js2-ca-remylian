@@ -11,4 +11,4 @@ export function readProfile(username) {
 	return apiRequest(url, 'GET');
 }
 
-export async function readProfiles(limit, page) {}
+export async function readProfiles(limit, page) {} //not in use
