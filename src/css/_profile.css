@@ -1,0 +1,117 @@
+details {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	text-align: center;
+}
+
+.profile-update-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+summary {
+	background-color: #96b9b0;
+	border: 1px solid black;
+	text-align: center;
+	list-style: none;
+}
+
+summary:hover {
+	background-color: #b5c9c4;
+	cursor: pointer;
+}
+
+h2 {
+	margin: 0 auto;
+}
+
+.avatar-img {
+	border-radius: 50%;
+}
+
+.profile-user {
+	box-shadow: 1px 2px 2px grey;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	max-width: 20rem;
+	margin: 0 auto;
+	padding: 1rem;
+	border: 1px solid rgb(99, 113, 114);
+	text-align: center;
+}
+
+.profile-user img {
+	margin: 0 auto;
+}
+
+.profile-user-info {
+	display: flex;
+	flex-direction: column;
+}
+
+.profile-banner {
+	object-fit: cover;
+	overflow: hidden;
+	width: 100%;
+	max-height: 40rem;
+	margin: 0 auto;
+}
+
+.follow-button {
+	margin-top: 1rem;
+}
+
+.profile-card {
+	box-shadow: 2px 2px 2px grey;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 0.25rem;
+	border: 1px solid #4d4938;
+}
+
+.profile-posts {
+	width: 80rem;
+	max-width: 100%;
+	margin: 0 auto;
+	margin-top: 2rem;
+}
+
+.profile-create-post {
+	box-shadow: 2px 2px 2px black;
+	width: 5rem;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 0.5rem;
+	background-color: #b5c9c4;
+	border: 1px solid black;
+	border-radius: 4px;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+}
+
+.profile-create-post:hover {
+	background-color: #96b9b0;
+}
+
+.post-card-actions {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.post-card-actions a {
+	padding: 0.25rem;
+	background-color: #b5c9c4;
+	border: 1px solid black;
+	border-radius: 4px;
+	color: black;
+	text-decoration: none;
+}
+
+.post-card-actions a:hover {
+	background-color: #96b9b0;
+}

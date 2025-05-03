@@ -1,16 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noroff FED2 JS2 CA</title>
-    <script type="module" src="/src/app.js"></script>
-  </head>
-  <body>
-    <h1>Create Post</h1>
+	<head>
+		<meta
+			name="description"
+			content="Noroff Social – share posts, follow friends, and explore content. A lightweight vanilla-JS front end powered by Noroff’s Social API." />
+		<link rel="icon" href="/public/images/favicon.ico" type="image/x-icon" />
 
-    <form name="createPost">
-      <button>Create Post</button>
-    </form>
-  </body>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Create Profile</title>
+		<script type="module" src="/src/app.js"></script>
+	</head>
+	<body class="form-body">
+		<header>
+			<nav>
+				<a href="/">
+					<img class="home-logo" src="/images/noroff-logo.png" alt="Noroff Logo" />
+				</a>
+			</nav>
+		</header>
+		<main>
+			<h1>Create Post</h1>
+
+			<form class="create-form forms" name="createPost">
+				<div class="form-field">
+					<label for="title">Title:</label>
+					<input type="text" name="title" id="title" required />
+				</div>
+				<div class="form-field">
+					<label for="body">Body:</label>
+					<textarea name="body" id="body" required></textarea>
+				</div>
+				<div class="form-field">
+					<label for="tags">Tags (comma separated):</label>
+					<input type="text" name="tags" id="tags" />
+				</div>
+				<div class="form-field">
+					<label for="media">Banner URL (optional):</label>
+					<input type="text" name="media" id="media" />
+				</div>
+				<div id="error-message"></div>
+				<div id="Create-controls">
+					<button type="submit" id="create-btn" class="create-button form-button">Create Post</button>
+					<div id="create-spinner" class="spinner" hidden></div>
+				</div>
+			</form>
+		</main>
+		<footer class="form-footer">&copy;Noroff JS2 CA</footer>
+	</body>
 </html>

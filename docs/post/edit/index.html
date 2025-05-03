@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base href="/fed2-js2-ca-remylian/" />
+		<meta
+			name="description"
+			content="Noroff Social – share posts, follow friends, and explore content. A lightweight vanilla-JS front end powered by Noroff’s Social API." />
+		<link rel="icon" href="/fed2-js2-ca-remylian/assets/favicon-BuIV98-7.ico" type="image/x-icon" />
+
+		<meta charset="UTF-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Edit Post</title>
+		<script type="module" crossorigin src="/fed2-js2-ca-remylian/assets/app-zhDhycHC.js"></script>
+		<link rel="stylesheet" crossorigin href="/fed2-js2-ca-remylian/assets/app-B8_kQJsm.css">
+	</head>
+
+	<body class="form-body">
+		<header>
+			<nav>
+				<a href="/">
+					<img class="home-logo" src="/fed2-js2-ca-remylian/images/noroff-logo.png" alt="Noroff Logo" />
+				</a>
+			</nav>
+		</header>
+
+		<main>
+			<h1>Edit Post</h1>
+
+			<form class="edit-form forms" name="editPost">
+				<div class="form-field">
+					<label for="title">Title:</label>
+					<input type="text" name="title" id="title" required />
+				</div>
+				<div class="form-field">
+					<label for="body">Body:</label>
+					<textarea name="body" id="body" required></textarea>
+				</div>
+				<div class="form-field">
+					<label for="tags">Tags (comma separated):</label>
+					<input type="text" name="tags" id="tags" />
+				</div>
+				<div class="form-field">
+					<label for="media">Banner URL (optional):</label>
+					<input type="text" name="media" id="media" />
+				</div>
+				<div id="edit-controls">
+					<button type="submit" id="edit-btn" class="edit-button form-button">Update Post</button>
+					<div id="edit-spinner" class="spinner" hidden></div>
+				</div>
+
+				<div id="success-msg"></div>
+				<div id="error-message"></div>
+			</form>
+		</main>
+
+		<footer class="form-footer">&copy;Noroff JS2 CA</footer>
+	</body>
+</html>

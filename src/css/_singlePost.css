@@ -1,0 +1,84 @@
+.post-container {
+	box-shadow: 2px 2px 2px grey;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 80rem;
+	margin: 1rem auto;
+	padding: 1.5rem;
+	border: 1px solid #4d4938;
+	box-sizing: border-box;
+}
+
+.post-container img {
+	object-fit: contain;
+	width: 100%;
+	height: auto;
+	max-height: 40rem;
+	margin: 1rem auto;
+}
+
+.post-container-info {
+	box-shadow: 0 2px 5px grey;
+	width: 100%;
+	margin: 0 auto 1rem;
+	padding: 1rem;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.post-container-info p {
+	padding: 0.25rem 0;
+	text-align: left;
+}
+
+.post-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: center;
+	margin: 2rem 0;
+}
+
+.post-actions a,
+.post-actions button {
+	flex: 1 1 auto;
+	max-width: 12rem;
+	padding: 0.5rem;
+	background-color: #b5c9c4;
+	border: 1px solid black;
+	border-radius: 4px;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.post-actions a:hover,
+.post-actions button:hover {
+	background-color: #96b9b0;
+}
+
+.post-logout-btn {
+	display: block;
+	margin: 0 auto 3rem;
+	padding: 0.5rem 1rem;
+	background-color: #b5c9c4;
+	border: 1px solid black;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+/* Larger screens: */
+@media (min-width: 40rem) {
+	.post-container {
+		padding: 2rem;
+	}
+	.post-container-info {
+		padding: 2rem;
+	}
+	.post-actions {
+		justify-content: flex-start;
+	}
+}
